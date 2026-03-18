@@ -81,6 +81,38 @@ int playAgain(char* message) { // Determines if the game should run again
     }
 }
 
+void showWin(char* board, char winner) {
+    // All possible winning combinations
+    int win_combos[8][3] = 
+    {
+        {0, 1, 2},
+        {3, 4, 5},
+        {6, 7, 8},
+
+        {0, 4, 8},
+        {2, 4, 6},
+        
+        {0, 3, 6},
+        {1, 4, 7},
+        {2, 5, 8},
+    };
+
+    int winners[8];
+    int count = 0;
+    for (int i=0; i<8; i++) {
+        int tiles = 0;
+        for (int j=0; j<3; j++) {
+            if (board[win_combos[i][j]] == winner) {
+                tiles++;
+            }
+        }
+        if (tiles >= 3) {
+            winners[count] = i;
+            count++;
+        }
+    }
+}
+
 int main() {
     // Initialize variables
     srand(time(NULL));
