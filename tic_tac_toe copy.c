@@ -97,6 +97,13 @@ void showWin(char* board, char winner) {
         {2, 5, 8},
     };
 
+    char new_board[9] = 
+    {
+        ' ', ' ', ' ',
+        ' ', ' ', ' ',
+        ' ', ' ', ' '
+    };
+
     int winners[8];
     int count = 0;
     for (int i=0; i<8; i++) {
@@ -111,6 +118,12 @@ void showWin(char* board, char winner) {
             count++;
         }
     }
+    for (int i=0; i<count; i++) {
+        for (int j=0; j<3; j++) {
+            new_board[win_combos[winners[i]][j]] = winner;
+        }
+    }
+    printBoard(new_board);
 }
 
 int main() {
@@ -139,7 +152,7 @@ int main() {
         // Win check #1
         int win = checkWin(board);
         if (win == 1) {
-            printBoard(board);
+            showWin(board, 'X');
             int play_again = playAgain("\nCongrats, you win! Play again? (Y/N): ");
             if (play_again == 1) {
                 for (int i=0; i<9; i++) { // Erase the board for future playthroughs
@@ -178,7 +191,7 @@ int main() {
         // Win check #2
         win = checkWin(board);
         if (win == 2) {
-            printBoard(board);
+            showWin(board, 'O');
             int play_again = playAgain("\nYou lost, womp womp! Play again? (Y/N): ");
             if (play_again == 1) {
                 for (int i=0; i<9; i++) {
