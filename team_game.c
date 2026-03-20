@@ -1,5 +1,13 @@
 // JF & SA, Tic Tac Toe
 
+/*
+Programmers:
+
+Jonas was responsible for the bulk of code logic and programming.
+Scarlette was responsible for debugging and formulating ideas for the program.
+*/
+
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
